@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { SyncService } from './sync.service';
 
 @NgModule({
     imports: [
@@ -13,7 +14,8 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
         AppComponent,
         routedComponents
     ],
-    bootstrap: [AppComponent]
+    bootstrap: [AppComponent],
+    providers: [SyncService]
 })
 export class AppModule {
 }
