@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { StorageService } from './storage.service';
 import { SyncService } from './sync.service';
 
 @NgModule({
@@ -15,7 +16,10 @@ import { SyncService } from './sync.service';
         routedComponents
     ],
     bootstrap: [AppComponent],
-    providers: [SyncService]
+    providers: [
+        StorageService,
+        SyncService
+    ]
 })
 export class AppModule {
 }
