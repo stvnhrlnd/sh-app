@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+import { ContentComponent } from './content.component';
 import { SyncComponent } from './sync.component';
 
 const routes: Routes = [
@@ -12,6 +13,10 @@ const routes: Routes = [
     {
         path: 'sync',
         component: SyncComponent
+    },
+    {
+        path: '**',
+        component: ContentComponent
     }
 ];
 
@@ -22,4 +27,4 @@ const routes: Routes = [
 export class AppRoutingModule {
 }
 
-export const routedComponents = [SyncComponent];
+export const routedComponents = [ContentComponent, SyncComponent];
