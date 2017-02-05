@@ -4,6 +4,7 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
+import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
 import { SyncService } from './sync.service';
 
@@ -19,6 +20,7 @@ import { SyncService } from './sync.service';
     ],
     bootstrap: [AppComponent],
     providers: [
+        ContentService,
         StorageService,
         SyncService
     ]
