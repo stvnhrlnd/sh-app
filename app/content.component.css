@@ -1,0 +1,62 @@
+.site-header {
+    background: rgb(61, 79, 93);
+    color: rgb(255, 255, 255);
+    padding: 2em 1em;
+    text-align: center;
+}
+
+.site-title {
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.site-tagline {
+    font-size: 1.3em;
+    color: rgb(176, 202, 219);
+    margin: .3em 0 1em;
+}
+
+.site-nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.site-nav li {
+    display: inline-block;
+    margin: 0 .2em;
+}
+
+.site-nav a {
+    border: 2px solid rgb(176, 202, 219);
+    border-radius: 2px;
+    color: #fff;
+    display: block;
+    font-size: .85em;
+    padding: .5em 1em;
+    letter-spacing: .05em;
+    text-decoration: none;
+    text-transform: uppercase;
+}
+
+.site-nav a:hover {
+    border: 2px solid rgb(61, 146, 201);
+}
+
+.content {
+    margin: auto;
+    max-width: 600px;
+    padding: 1em;
+}
+
+.footer {
+    border-top: 1px solid #eee;
+    color: #aaa;
+    font-size: .8em;
+    margin-top: 2em;
+    padding: 1em 0;
+}
+
+.footer a {
+    color: #aaa;
+}
