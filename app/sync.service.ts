@@ -3,13 +3,17 @@ import { Http, URLSearchParams } from '@angular/http';
 
 import 'rxjs/add/operator/toPromise';
 
+import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
 
 @Injectable()
 export class SyncService {
     private apiEndpoint = 'http://localhost:58463/Umbraco/Api/Content/';
 
-    constructor(private http: Http, private storageService: StorageService) {
+    constructor(
+        private http: Http,
+        private contentService: ContentService,
+        private storageService: StorageService) {
     }
 
     checkForUpdates(): Promise<boolean> {
@@ -35,6 +39,7 @@ export class SyncService {
                 let md5Hash = eTagHeader.replace(/"/g, '');
                 this.storageService.setItem('contentHash', md5Hash);
                 this.storageService.setItem('content', response.text());
+                this.contentService.loadContent();
             })
             .catch(this.handleError);
     }
