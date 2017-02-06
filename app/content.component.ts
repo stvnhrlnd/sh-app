@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { ContentService } from './content.service';
 
@@ -8,7 +8,15 @@ import { ContentService } from './content.service';
     templateUrl: 'content.component.html',
     styleUrls: ['content.component.css']
 })
-export class ContentComponent {
+export class ContentComponent implements OnInit {
+    private siteName: string;
+
     constructor(private contentService: ContentService) {
+    }
+
+    ngOnInit() {
+        let website = this.contentService
+            .contentSingleAtJSONPath('$..[?(@.documentTypeAlias == "website")]');
+        this.siteName = website.content.siteName;
     }
 }
