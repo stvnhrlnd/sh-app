@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
-import { SyncService } from './sync.service';
 
 @NgModule({
     imports: [
@@ -21,8 +20,7 @@ import { SyncService } from './sync.service';
     bootstrap: [AppComponent],
     providers: [
         ContentService,
-        StorageService,
-        SyncService
+        StorageService
     ]
 })
 export class AppModule {

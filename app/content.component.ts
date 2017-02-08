@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NavigationStart, Router } from '@angular/router';
 
+import { Content } from './content';
 import { ContentService } from './content.service';
 
 @Component({
@@ -10,13 +12,28 @@ import { ContentService } from './content.service';
 })
 export class ContentComponent implements OnInit {
     private siteName: string;
+    private content: Content;
 
-    constructor(private contentService: ContentService) {
+    constructor(
+        private router: Router,
+        private contentService: ContentService) {
     }
 
     ngOnInit() {
         let website = this.contentService
             .contentSingleAtJSONPath('$..[?(@.documentTypeAlias == "website")]');
         this.siteName = website.content.siteName;
+
+        this.loadContent(this.router.url);
+        this.router.events.subscribe(event => {
+            if (event instanceof NavigationStart) {
+                this.loadContent(event.url);
+            }
+        });
+    }
+
+    private loadContent(url: string) {
+        this.content = this.contentService
+            .contentSingleAtJSONPath(`$..[?(@.url == "${url}/")]`);
     }
 }

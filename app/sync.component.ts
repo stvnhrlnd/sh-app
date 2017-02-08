@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { SyncService } from './sync.service';
+import { ContentService } from './content.service';
 
 @Component({
     moduleId: module.id,
@@ -10,13 +10,13 @@ import { SyncService } from './sync.service';
     styleUrls: ['sync.component.css']
 })
 export class SyncComponent implements OnInit {
-    constructor(private router: Router, private syncService: SyncService) {
+    constructor(private router: Router, private contentService: ContentService) {
     }
 
     ngOnInit() {
-        this.syncService.checkForUpdates().then(result => {
+        this.contentService.checkForUpdates().then(result => {
             if (result) {
-                this.syncService.sync().then(() => {
+                this.contentService.sync().then(() => {
                     this.router.navigate(['/home']);
                 });
             } else {
