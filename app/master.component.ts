@@ -6,11 +6,11 @@ import { ContentService } from './content.service';
 
 @Component({
     moduleId: module.id,
-    selector: 'sh-content',
-    templateUrl: 'content.component.html',
-    styleUrls: ['content.component.css']
+    selector: 'sh-master',
+    templateUrl: 'master.component.html',
+    styleUrls: ['master.component.css']
 })
-export class ContentComponent implements OnInit {
+export class MasterComponent implements OnInit {
     private siteName: string;
     private content: Content;
 
