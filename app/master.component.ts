@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ComponentFactoryResolver, OnInit, ViewContainerRef, ViewChild } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
+import { entryComponents } from './app.module';
 import { Content } from './content';
 import { ContentService } from './content.service';
 
@@ -14,7 +15,11 @@ export class MasterComponent implements OnInit {
     private siteName: string;
     private content: Content;
 
+    @ViewChild('dynamicComponentContainer', { read: ViewContainerRef })
+    private dynamicComponentContainer: ViewContainerRef;
+
     constructor(
+        private componentFactoryResolver: ComponentFactoryResolver,
         private router: Router,
         private contentService: ContentService) {
     }
@@ -33,7 +38,18 @@ export class MasterComponent implements OnInit {
     }
 
     private loadContent(url: string) {
+        this.dynamicComponentContainer.clear();
+
         this.content = this.contentService
             .contentSingleAtJSONPath(`$..[?(@.url == "${url}/")]`);
+        if (this.content) {
+            let component = entryComponents
+                .find(c => c.name === `${this.content.template}Component`);
+            if (component) {
+                let factory = this.componentFactoryResolver
+                    .resolveComponentFactory(component);
+                this.dynamicComponentContainer.createComponent(factory);
+            }
+        }
     }
 }
