@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
@@ -15,6 +16,7 @@ import { StorageService } from './storage.service';
     ],
     declarations: [
         AppComponent,
+        HomeComponent,
         routedComponents
     ],
     bootstrap: [AppComponent],
