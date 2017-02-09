@@ -8,6 +8,8 @@ import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
 
+export const entryComponents: any[] = [HomeComponent];
+
 @NgModule({
     imports: [
         BrowserModule,
@@ -23,7 +25,8 @@ import { StorageService } from './storage.service';
     providers: [
         ContentService,
         StorageService
-    ]
+    ],
+    entryComponents: entryComponents
 })
 export class AppModule {
 }
