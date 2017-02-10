@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
+import { DynamicComponent } from './dynamic.component';
 import { HomeComponent } from './home.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ContentService } from './content.service';
@@ -18,6 +19,7 @@ export const entryComponents: any[] = [HomeComponent];
     ],
     declarations: [
         AppComponent,
+        DynamicComponent,
         HomeComponent,
         routedComponents
     ],
