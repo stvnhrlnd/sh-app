@@ -20,8 +20,7 @@ export class MasterComponent implements OnInit {
     }
 
     ngOnInit() {
-        let website = this.contentService
-            .contentSingleAtJSONPath('$..[?(@.documentTypeAlias == "website")]');
+        let website = this.contentService.getByDocumentTypeAlias('website')[0];
         this.siteName = website.content.siteName;
 
         this.loadContent(this.router.url);
@@ -33,7 +32,6 @@ export class MasterComponent implements OnInit {
     }
 
     private loadContent(url: string) {
-        this.content = this.contentService
-            .contentSingleAtJSONPath(`$..[?(@.url == "${url}/")]`);
+        this.content = this.contentService.getByURL(url);
     }
 }
