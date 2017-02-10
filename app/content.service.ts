@@ -41,6 +41,14 @@ export class ContentService {
         return content[0];
     }
 
+    getByDocumentTypeAlias(alias: string): Content[] {
+        return this.contentAtJSONPath(`$..[?(@.documentTypeAlias == '${alias}')]`);
+    }
+
+    getByURL(url: string): Content {
+        return this.contentSingleAtJSONPath(`$..[?(@.url == '${url}/')]`);
+    }
+
     loadContent() {
         this.content = JSON.parse(this.storageService.getItem('content'));
     }
