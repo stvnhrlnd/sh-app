@@ -3,7 +3,14 @@ body {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     font-family: 'Oswald', sans-serif;
     font-weight: 400;
+}
+
+pre {
+    background: #eee;
+    overflow-x: auto;
+    padding: .5em;
 }

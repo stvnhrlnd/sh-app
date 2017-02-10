@@ -18,6 +18,8 @@
             'rxjs': 'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
 
+            'markdown-to-html-pipe': 'npm:markdown-to-html-pipe/src/markdown-to-html.pipe.js',
+            'marked': 'npm:marked/marked.min.js',
             'jsonpath': 'npm:jsonpath/jsonpath.js'
         },
         packages: {

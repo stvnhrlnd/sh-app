@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
+import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
+
 import { AppComponent } from './app.component';
 import { DynamicComponent } from './dynamic.component';
 import { HomeComponent } from './home.component';
@@ -18,6 +20,7 @@ export const entryComponents: any[] = [HomeComponent];
         AppRoutingModule
     ],
     declarations: [
+        MarkdownToHtmlPipe,
         AppComponent,
         DynamicComponent,
         HomeComponent,

@@ -46,6 +46,7 @@
 .content {
     margin: auto;
     max-width: 600px;
+    overflow-wrap: break-word;
     padding: 1em;
 }
 
