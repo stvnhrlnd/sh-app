@@ -7,7 +7,7 @@ import { ContentService } from './content.service';
     moduleId: module.id,
     selector: 'sh-home',
     templateUrl: 'home.component.html',
-    styleUrls: ['home.component.css']
+    styleUrls: ['shared.css']
 })
 export class HomeComponent implements OnInit {
     private latestPost: Content;
