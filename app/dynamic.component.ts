@@ -1,4 +1,12 @@
-import { Component, ComponentFactoryResolver, Input, OnChanges, ViewChild, ViewContainerRef } from '@angular/core';
+import {
+    Component,
+    ComponentFactoryResolver,
+    Input,
+    OnChanges,
+    ReflectiveInjector,
+    ViewChild,
+    ViewContainerRef
+} from '@angular/core';
 
 import { entryComponents } from './app.module';
 import { Content } from './content';
@@ -24,10 +32,19 @@ export class DynamicComponent implements OnChanges {
         if (this.content) {
             let component = entryComponents
                 .find(c => c.name === `${this.content.template}Component`);
+
             if (component) {
+                let resolvedInputs = ReflectiveInjector.resolve([
+                    { provide: 'content', useValue: this.content }
+                ]);
+                let injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs,
+                    this.componentContainer.parentInjector);
+
                 let factory = this.componentFactoryResolver
                     .resolveComponentFactory(component);
-                this.componentContainer.createComponent(factory);
+                let componentref = factory.create(injector);
+
+                this.componentContainer.insert(componentref.hostView);
             }
         }
     }
