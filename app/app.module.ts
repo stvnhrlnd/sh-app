@@ -2,8 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
 
-import { MarkdownToHtmlPipe } from 'markdown-to-html-pipe';
-
 import { AppComponent } from './app.component';
 import { BlogComponent } from './blog.component';
 import { DynamicComponent } from './dynamic.component';
@@ -12,6 +10,7 @@ import { PostComponent } from './post.component';
 import { AppRoutingModule, routedComponents } from './app-routing.module';
 import { ContentService } from './content.service';
 import { StorageService } from './storage.service';
+import { MdPipe } from './md.pipe';
 
 export const entryComponents: any[] = [
     BlogComponent,
@@ -26,13 +25,13 @@ export const entryComponents: any[] = [
         AppRoutingModule
     ],
     declarations: [
-        MarkdownToHtmlPipe,
         AppComponent,
         BlogComponent,
         DynamicComponent,
         HomeComponent,
         PostComponent,
-        routedComponents
+        routedComponents,
+        MdPipe
     ],
     bootstrap: [AppComponent],
     providers: [

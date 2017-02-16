@@ -16,7 +16,6 @@
 
             'rxjs': 'npm:rxjs',
 
-            'markdown-to-html-pipe': 'npm:markdown-to-html-pipe/src/markdown-to-html.pipe.js',
             'marked': 'npm:marked/marked.min.js',
             'jsonpath': 'npm:jsonpath/jsonpath.js'
         },

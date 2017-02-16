@@ -2,6 +2,6 @@
 <article class="post" *ngIf="content">
     <h3 class="post-title">{{content.name}}</h3>
     <p class="post-meta">{{content.content.published | date:'fullDate'}}</p>
-    <div class="post-content" [innerHTML]="content.content.markdown | MarkdownToHtml">
+    <div class="post-content" [innerHTML]="content.content.markdown | md">
     </div>
 </article>

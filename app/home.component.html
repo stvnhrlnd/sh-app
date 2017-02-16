@@ -2,6 +2,6 @@
 <article class="post">
     <h3 class="post-title">{{latestPost.name}}</h3>
     <p class="post-meta">{{latestPost.content.published | date:'fullDate'}}</p>
-    <div class="post-content" [innerHTML]="latestPost.content.markdown | MarkdownToHtml">
+    <div class="post-content" [innerHTML]="latestPost.content.markdown | md">
     </div>
 </article>
