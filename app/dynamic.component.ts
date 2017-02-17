@@ -4,6 +4,7 @@ import {
     Input,
     OnChanges,
     ReflectiveInjector,
+    SimpleChanges,
     ViewChild,
     ViewContainerRef
 } from '@angular/core';
@@ -18,15 +19,15 @@ import { Content } from './content';
 })
 export class DynamicComponent implements OnChanges {
     @ViewChild('componentContainer', { read: ViewContainerRef })
-    private componentContainer: ViewContainerRef;
+    componentContainer: ViewContainerRef;
 
     @Input()
-    private content: Content;
+    content: Content;
 
     constructor(private componentFactoryResolver: ComponentFactoryResolver) {
     }
 
-    ngOnChanges() {
+    ngOnChanges(changes: SimpleChanges) {
         this.componentContainer.clear();
 
         if (this.content) {

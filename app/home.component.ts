@@ -10,7 +10,7 @@ import { ContentService } from './content.service';
     styleUrls: ['shared.css']
 })
 export class HomeComponent implements OnInit {
-    private latestPost: Content;
+    latestPost: Content;
 
     constructor(private contentService: ContentService) {
     }

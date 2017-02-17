@@ -11,8 +11,8 @@ import { ContentService } from './content.service';
     styleUrls: ['master.component.css']
 })
 export class MasterComponent implements OnInit {
-    private siteName: string;
-    private content: Content;
+    siteName: string;
+    content: Content;
 
     constructor(
         private router: Router,

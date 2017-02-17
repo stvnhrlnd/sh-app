@@ -9,7 +9,9 @@ import { Content } from './content';
     styleUrls: ['shared.css']
 })
 export class PostComponent {
-    constructor(
-        @Inject('content') private content: Content) {
+    content: Content;
+
+    constructor(@Inject('content') content: Content) {
+        this.content = content;
     }
 }

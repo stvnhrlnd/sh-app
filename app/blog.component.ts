@@ -10,7 +10,7 @@ import { ContentService } from './content.service';
     styleUrls: ['shared.css']
 })
 export class BlogComponent implements OnInit {
-    private posts: Content[] = [];
+    posts: Content[] = [];
 
     constructor(private contentService: ContentService) {
     }
