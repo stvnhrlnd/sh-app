@@ -27,6 +27,7 @@
     },
     "devDependencies": {
         "@types/jsonpath": "^0.1.29",
+        "@types/marked": "0.0.28",
         "@types/node": "^6.0.46",
         "concurrently": "^3.1.0",
         "http-server": "^0.9.0",
