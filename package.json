@@ -6,7 +6,8 @@
         "lint": "tslint ./app/**/*.ts -t verbose",
         "lite": "lite-server",
         "tsc": "tsc",
-        "tsc:w": "tsc -w"
+        "tsc:w": "tsc -w",
+        "aot": "ngc -p tsconfig-aot.json"
     },
     "dependencies": {
         "@angular/common": "~2.4.0",
