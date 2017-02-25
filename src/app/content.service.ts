@@ -21,7 +21,7 @@ export class ContentService {
      *
      * @memberof ContentService
      */
-    private apiEndpoint = 'http://localhost:58463/Umbraco/Api/JsonCache/';
+    private apiEndpoint = 'http://www.stevenhar.land/Umbraco/Api/JsonCache/';
 
     /**
      *
