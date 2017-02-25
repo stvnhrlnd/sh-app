@@ -4,7 +4,7 @@ import { Content } from '../content';
 import { ContentService } from '../content.service';
 
 /**
- *
+ * Displays a list of blog posts.
  *
  * @export
  * @class BlogComponent
@@ -18,7 +18,7 @@ import { ContentService } from '../content.service';
 })
 export class BlogComponent implements OnInit {
     /**
-     *
+     * The posts currently being displayed.
      *
      * @type {Content[]}
      * @memberof BlogComponent
@@ -27,6 +27,7 @@ export class BlogComponent implements OnInit {
 
     /**
      * Creates an instance of BlogComponent.
+     *
      * @param {ContentService} contentService
      *
      * @memberof BlogComponent
@@ -35,13 +36,15 @@ export class BlogComponent implements OnInit {
     }
 
     /**
-     *
+     * Gets the posts to display.
      *
      *
      * @memberof BlogComponent
      */
     ngOnInit() {
         this.posts = this.contentService.getByDocumentTypeAlias('post');
+
+        // Sort most recent first
         this.posts.sort((a, b) => a.content.published > b.content.published ? -1 : 1);
     }
 }

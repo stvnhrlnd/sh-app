@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { Content } from './content';
 
 /**
- *
+ * Implements content query and sync operations.
  *
  * @export
  * @class ContentService
@@ -15,7 +15,7 @@ import { Content } from './content';
 @Injectable()
 export class ContentService {
     /**
-     *
+     * Content API base URL.
      *
      * @private
      *
@@ -24,7 +24,7 @@ export class ContentService {
     private apiEndpoint = 'http://www.stevenhar.land/Umbraco/Api/JsonCache/';
 
     /**
-     *
+     * The content tree.
      *
      * @private
      * @type {Content[]}
@@ -34,6 +34,7 @@ export class ContentService {
 
     /**
      * Creates an instance of ContentService.
+     *
      * @param {Http} http
      *
      * @memberof ContentService
@@ -43,7 +44,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Checks the API for content updates.
      *
      * @returns {Promise<boolean>}
      *
@@ -65,7 +66,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Gets all content nodes matching a JSONPath expression.
      *
      * @param {string} pathExpression
      * @returns {Content[]}
@@ -78,7 +79,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Gets the first content node matching a JSONPath expression.
      *
      * @param {string} pathExpression
      * @returns {Content}
@@ -91,7 +92,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Gets all nodes of a document type.
      *
      * @param {string} alias
      * @returns {Content[]}
@@ -103,7 +104,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Gets a node by its URL.
      *
      * @param {string} url
      * @returns {Content}
@@ -115,7 +116,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Downloads fresh content from the API and stores it locally.
      *
      * @returns {Promise<any>}
      *
@@ -135,7 +136,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Logs errors.
      *
      * @private
      * @param {*} error
@@ -149,7 +150,7 @@ export class ContentService {
     }
 
     /**
-     *
+     * Loads content from local storage into memory.
      *
      *
      * @memberof ContentService

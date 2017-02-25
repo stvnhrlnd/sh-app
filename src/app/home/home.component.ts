@@ -4,7 +4,7 @@ import { Content } from '../content';
 import { ContentService } from '../content.service';
 
 /**
- *
+ * Displays the latest blog post.
  *
  * @export
  * @class HomeComponent
@@ -18,7 +18,7 @@ import { ContentService } from '../content.service';
 })
 export class HomeComponent implements OnInit {
     /**
-     *
+     * The post currently being displayed.
      *
      * @type {Content}
      * @memberof HomeComponent
@@ -27,6 +27,7 @@ export class HomeComponent implements OnInit {
 
     /**
      * Creates an instance of HomeComponent.
+     *
      * @param {ContentService} contentService
      *
      * @memberof HomeComponent
@@ -35,7 +36,7 @@ export class HomeComponent implements OnInit {
     }
 
     /**
-     *
+     * Gets the most recent blog post.
      *
      *
      * @memberof HomeComponent

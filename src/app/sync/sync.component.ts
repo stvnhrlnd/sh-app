@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { ContentService } from '../content.service';
 
 /**
- *
+ * Updates app content.
  *
  * @export
  * @class SyncComponent
@@ -18,6 +18,7 @@ import { ContentService } from '../content.service';
 export class SyncComponent implements OnInit {
     /**
      * Creates an instance of SyncComponent.
+     *
      * @param {Router} router
      * @param {ContentService} contentService
      *
@@ -27,7 +28,7 @@ export class SyncComponent implements OnInit {
     }
 
     /**
-     *
+     * Checks for updates and syncs before navigating to home page.
      *
      *
      * @memberof SyncComponent

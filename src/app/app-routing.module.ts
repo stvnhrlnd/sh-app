@@ -21,7 +21,7 @@ const routes: Routes = [
 ];
 
 /**
- *
+ * Defines app routes.
  *
  * @export
  * @class AppRoutingModule

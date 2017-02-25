@@ -3,7 +3,7 @@ import { Component, Inject } from '@angular/core';
 import { Content } from '../content';
 
 /**
- *
+ * Displays a blog post.
  *
  * @export
  * @class PostComponent
@@ -16,18 +16,19 @@ import { Content } from '../content';
 })
 export class PostComponent {
     /**
-     *
+     * The post currently being displayed.
      *
      * @type {Content}
-     * @memberOf PostComponent
+     * @memberof PostComponent
      */
     content: Content;
 
     /**
      * Creates an instance of PostComponent.
+     *
      * @param {Content} content
      *
-     * @memberOf PostComponent
+     * @memberof PostComponent
      */
     constructor(@Inject('content') content: Content) {
         this.content = content;
