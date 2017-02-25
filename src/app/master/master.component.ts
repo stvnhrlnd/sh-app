@@ -8,8 +8,16 @@ import {
 } from '@angular/core';
 import { NavigationStart, Router } from '@angular/router';
 
-import { entryComponents } from '../app.module';
 import { ContentService } from '../content.service';
+import { BlogComponent } from '../blog/blog.component';
+import { HomeComponent } from '../home/home.component';
+import { PostComponent } from '../post/post.component';
+
+const templateComponents = {
+    'Blog': BlogComponent,
+    'Home': HomeComponent,
+    'Post': PostComponent
+};
 
 /**
  *
@@ -86,9 +94,7 @@ export class MasterComponent implements OnInit {
 
         const content = this.contentService.getByURL(url);
         if (content) {
-            const component = entryComponents
-                .find(c => c.name === `${content.template}Component`);
-
+            const component = templateComponents[content.template];
             if (component) {
                 const resolvedInputs = ReflectiveInjector.resolve([
                     { provide: 'content', useValue: content }
