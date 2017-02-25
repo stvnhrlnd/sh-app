@@ -1,0 +1,21 @@
+body {
+    font-family: 'Droid Sans', sans-serif;
+}
+
+a {
+    color: rgb(61, 146, 201);
+    text-decoration: underline;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+}
+
+pre {
+    background: #eee;
+    overflow-x: auto;
+    padding: .5em;
+}
