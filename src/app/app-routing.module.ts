@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
+import { ContentGuard } from './content-guard.service';
 import { MasterComponent } from './master/master.component';
 import { SyncComponent } from './sync/sync.component';
 
@@ -16,7 +17,8 @@ const routes: Routes = [
     },
     {
         path: '**',
-        component: MasterComponent
+        component: MasterComponent,
+        canActivate: [ContentGuard]
     }
 ];
 
@@ -28,7 +30,8 @@ const routes: Routes = [
  */
 @NgModule({
     imports: [RouterModule.forRoot(routes)],
-    exports: [RouterModule]
+    exports: [RouterModule],
+    providers: [ContentGuard]
 })
 export class AppRoutingModule {
 }

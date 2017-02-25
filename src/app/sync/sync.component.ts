@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 import { ContentService } from '../content.service';
 
@@ -24,23 +24,35 @@ export class SyncComponent implements OnInit {
      *
      * @memberof SyncComponent
      */
-    constructor(private router: Router, private contentService: ContentService) {
+    constructor(
+        private route: ActivatedRoute,
+        private router: Router,
+        private contentService: ContentService) {
     }
 
     /**
-     * Checks for updates and syncs before navigating to home page.
+     * Checks for updates and syncs before navigating to the next page.
      *
      *
      * @memberof SyncComponent
      */
     ngOnInit() {
+        // Redirect to home unless a specific redirect URL has been passed as
+        // a route parameter.
+        let redirectUrl = '/home';
+        this.route.params.subscribe(params => {
+            if (params['redirectUrl']) {
+                redirectUrl = params['redirectUrl'];
+            }
+        });
+
         this.contentService.checkForUpdates().then(result => {
             if (result) {
                 this.contentService.sync().then(() => {
-                    this.router.navigate(['/home']);
+                    this.router.navigate([redirectUrl]);
                 });
             } else {
-                this.router.navigate(['/home']);
+                this.router.navigate([redirectUrl]);
             }
         });
     }
