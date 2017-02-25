@@ -44,6 +44,15 @@ export class MasterComponent implements OnInit {
     contentContainer: ViewContainerRef;
 
     /**
+     * Flag to indicate that the current URL does not match an Umbraco
+     * document.
+     *
+     *
+     * @memberof MasterComponent
+     */
+    pageNotFound = false;
+
+    /**
      * The site title.
      *
      * @type {string}
@@ -100,6 +109,8 @@ export class MasterComponent implements OnInit {
 
         const content = this.contentService.getByURL(url);
         if (content) {
+            this.pageNotFound = false;
+
             // Get the component that will be used to render the content
             const component = templateComponents[content.template];
             if (component) {
@@ -117,6 +128,8 @@ export class MasterComponent implements OnInit {
                 const componentref = factory.create(injector);
                 this.contentContainer.insert(componentref.hostView);
             }
+        } else {
+            this.pageNotFound = true;
         }
     }
 }
