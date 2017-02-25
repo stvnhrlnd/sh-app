@@ -21,7 +21,7 @@ export class ContentService {
      *
      * @memberof ContentService
      */
-    private apiEndpoint = 'http://localhost:58463/Umbraco/Api/Content/';
+    private apiEndpoint = 'http://localhost:58463/Umbraco/Api/JsonCache/';
 
     /**
      *
@@ -58,7 +58,7 @@ export class ContentService {
         const searchParams = new URLSearchParams();
         searchParams.set('hash', md5Hash);
         return this.http
-            .get(`${this.apiEndpoint}ValidateMd5`, { search: searchParams })
+            .get(`${this.apiEndpoint}Validate`, { search: searchParams })
             .toPromise()
             .then(response => !response.json())
             .catch(this.handleError);
@@ -122,7 +122,7 @@ export class ContentService {
      * @memberof ContentService
      */
     sync(): Promise<any> {
-        return this.http.get(`${this.apiEndpoint}Json`)
+        return this.http.get(`${this.apiEndpoint}Download`)
             .toPromise()
             .then(response => {
                 const eTagHeader = response.headers.get('etag');
