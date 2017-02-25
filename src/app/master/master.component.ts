@@ -13,6 +13,7 @@ import { BlogComponent } from '../blog/blog.component';
 import { HomeComponent } from '../home/home.component';
 import { PostComponent } from '../post/post.component';
 
+// Maps Umbraco template name to Angular component
 const templateComponents = {
     'Blog': BlogComponent,
     'Home': HomeComponent,
@@ -20,7 +21,8 @@ const templateComponents = {
 };
 
 /**
- *
+ * Displays common page elements (e.g., header and footer) and renders the
+ * current content dynamically based on the URL.
  *
  * @export
  * @class MasterComponent
@@ -33,7 +35,7 @@ const templateComponents = {
 })
 export class MasterComponent implements OnInit {
     /**
-     *
+     * The dynamic component container.
      *
      * @type {ViewContainerRef}
      * @memberof MasterComponent
@@ -42,7 +44,7 @@ export class MasterComponent implements OnInit {
     contentContainer: ViewContainerRef;
 
     /**
-     *
+     * The site title.
      *
      * @type {string}
      * @memberof MasterComponent
@@ -51,6 +53,7 @@ export class MasterComponent implements OnInit {
 
     /**
      * Creates an instance of MasterComponent.
+     *
      * @param {ComponentFactoryResolver} componentFactoryResolver
      * @param {Router} router
      * @param {ContentService} contentService
@@ -64,7 +67,7 @@ export class MasterComponent implements OnInit {
     }
 
     /**
-     *
+     * Initialises the component.
      *
      *
      * @memberof MasterComponent
@@ -73,7 +76,10 @@ export class MasterComponent implements OnInit {
         const website = this.contentService.getByDocumentTypeAlias('website')[0];
         this.siteName = website.content.siteName;
 
+        // Load the initial content
         this.loadContent(this.router.url);
+
+        // When the route changes load new content
         this.router.events.subscribe(event => {
             if (event instanceof NavigationStart) {
                 this.loadContent(event.url);
@@ -82,10 +88,10 @@ export class MasterComponent implements OnInit {
     }
 
     /**
-     *
+     * Loads content onto the page.
      *
      * @private
-     * @param {string} url
+     * @param {string} url - The URL of the content node.
      *
      * @memberof MasterComponent
      */
@@ -94,18 +100,21 @@ export class MasterComponent implements OnInit {
 
         const content = this.contentService.getByURL(url);
         if (content) {
+            // Get the component that will be used to render the content
             const component = templateComponents[content.template];
             if (component) {
+                // Create an injector that will inject the content node into
+                // the dynamically created component.
                 const resolvedInputs = ReflectiveInjector.resolve([
                     { provide: 'content', useValue: content }
                 ]);
                 const injector = ReflectiveInjector.fromResolvedProviders(resolvedInputs,
                     this.contentContainer.parentInjector);
 
+                // Create the component and insert it into the view container
                 const factory = this.componentFactoryResolver
                     .resolveComponentFactory(component);
                 const componentref = factory.create(injector);
-
                 this.contentContainer.insert(componentref.hostView);
             }
         }
