@@ -10,7 +10,7 @@ import { BlogComponent } from './blog/blog.component';
 import { HomeComponent } from './home/home.component';
 import { PostComponent } from './post/post.component';
 
-export const entryComponents: any[] = [
+const entryComponents: any[] = [
     BlogComponent,
     HomeComponent,
     PostComponent
