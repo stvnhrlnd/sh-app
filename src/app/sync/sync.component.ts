@@ -17,6 +17,23 @@ import { ContentService } from '../content.service';
 })
 export class SyncComponent implements OnInit {
     /**
+     * Flag to indicate that an error has occurred.
+     *
+     *
+     * @memberof SyncComponent
+     */
+    syncError = false;
+
+    /**
+     * The URL to navigate to after syncing.
+     *
+     * @private
+     *
+     * @memberof SyncComponent
+     */
+    private redirectUrl = '/home';
+
+    /**
      * Creates an instance of SyncComponent.
      *
      * @param {Router} router
@@ -37,23 +54,38 @@ export class SyncComponent implements OnInit {
      * @memberof SyncComponent
      */
     ngOnInit() {
-        // Redirect to home unless a specific redirect URL has been passed as
-        // a route parameter.
-        let redirectUrl = '/home';
+        // Check route params for alternative redirect URL
         this.route.params.subscribe(params => {
             if (params['redirectUrl']) {
-                redirectUrl = params['redirectUrl'];
+                this.redirectUrl = params['redirectUrl'];
             }
         });
 
         this.contentService.checkForUpdates().then(result => {
             if (result) {
                 this.contentService.sync().then(() => {
-                    this.router.navigate([redirectUrl]);
-                });
+                    this.router.navigate([this.redirectUrl]);
+                }).catch(() => this.handleError());
             } else {
-                this.router.navigate([redirectUrl]);
+                this.router.navigate([this.redirectUrl]);
             }
-        });
+        }).catch(() => this.handleError());
+    }
+
+    /**
+     * Handles sync errors.
+     *
+     * @private
+     *
+     * @memberof SyncComponent
+     */
+    private handleError() {
+        // If local content is available from a previous sync then proceed as
+        // normal, otherwise show an error message in the view.
+        if (localStorage.getItem('contentHash') != null) {
+            this.router.navigate([this.redirectUrl]);
+        } else {
+            this.syncError = true;
+        }
     }
 }
