@@ -21,7 +21,7 @@ export class ContentService {
      *
      * @memberof ContentService
      */
-    private apiEndpoint = 'http://www.stevenhar.land/Umbraco/Api/JsonCache/';
+    private apiEndpoint = 'https://stevenhar-land.azurewebsites.net/Umbraco/Api/JsonCache/';
 
     /**
      * The content tree.
