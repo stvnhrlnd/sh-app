@@ -116,6 +116,17 @@ export class ContentService {
     }
 
     /**
+     * Returns true if there is content stored locally.
+     *
+     * @returns {boolean}
+     *
+     * @memberof ContentService
+     */
+    isSynced(): boolean {
+        return localStorage.getItem('content') !== null;
+    }
+
+    /**
      * Downloads fresh content from the API and stores it locally.
      *
      * @returns {Promise<any>}
