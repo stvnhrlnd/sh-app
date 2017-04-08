@@ -29,7 +29,6 @@
     "devDependencies": {
         "@angular/cli": "1.0.0",
         "@angular/compiler-cli": "^4.0.0",
-        "@angular/service-worker": "^1.0.0-beta.8",
         "@types/jasmine": "2.5.38",
         "@types/jsonpath": "^0.1.29",
         "@types/marked": "0.0.28",
