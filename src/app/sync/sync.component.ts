@@ -82,7 +82,7 @@ export class SyncComponent implements OnInit {
     private handleError() {
         // If local content is available from a previous sync then proceed as
         // normal, otherwise show an error message in the view.
-        if (localStorage.getItem('contentHash') != null) {
+        if (this.contentService.isSynced()) {
             this.router.navigate([this.redirectUrl]);
         } else {
             this.syncError = true;

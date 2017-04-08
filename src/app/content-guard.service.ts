@@ -6,6 +6,8 @@ import {
     RouterStateSnapshot
 } from '@angular/router';
 
+import { ContentService } from './content.service';
+
 /**
  * Prevents component activation before content has been synced.
  *
@@ -17,12 +19,12 @@ import {
 export class ContentGuard implements CanActivate {
     /**
      * Creates an instance of ContentGuard.
-     *
      * @param {Router} router
+     * @param {ContentService} contentService
      *
-     * @memberof ContentGuard
+     * @memberOf ContentGuard
      */
-    constructor(private router: Router) {
+    constructor(private router: Router, private contentService: ContentService) {
     }
 
     /**
@@ -36,8 +38,7 @@ export class ContentGuard implements CanActivate {
      * @memberof ContentGuard
      */
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        const contentHash = localStorage.getItem('contentHash');
-        if (contentHash != null) {
+        if (this.contentService.isSynced()) {
             return true;
         }
 
